@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna, я тебе люблю!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="popup" id="popup1">
+        <p>Анна, чи знаєш ти, як сильно тебе люблю?</p>
+        <button onclick="playMusic()">Почати</button>
+        <button onclick="nextPopup(2)">Так</button>
+        <button onclick="nextPopup(2)">Хочу дізнатись більше</button>
+    </div>
+
+    <div class="popup hidden" id="popup2">
+        <p>Ти – сенс мого життя. Що ти любиш найбільше?</p>
+        <button onclick="nextPopup(3)">Моменти разом</button>
+        <button onclick="nextPopup(3)">Твою посмішку</button>
+    </div>
+
+    <div class="popup hidden" id="popup3">
+        <p>Якби любов була музикою, яку пісню ти б обрала?</p>
+        <button onclick="nextPopup(4)">Мелодія серця</button>
+    </div>
+
+    <div class="popup hidden" id="popup4">
+        <p>Я люблю тебе більше за все на світі</p>
+        <button onclick="endPopup()">Назавжди разом</button>
+    </div>
+</div>
+
+<!-- Музика -->
+<audio id="bg-music" loop>
+    <source src="../WebSiteAboutMyLove/music/La La.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
