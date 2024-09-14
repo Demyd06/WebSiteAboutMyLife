@@ -1,7 +1,12 @@
 function playMusic() {
     const music = document.getElementById('bg-music');
-    music.play();  // Музика починає грати після кліку на кнопку
+    music.play().then(() => {
+        console.log("Музика почала грати");
+    }).catch(error => {
+        console.log("Помилка при відтворенні музики: ", error);
+    });
 }
+
 
 function nextPopup(popupId) {
     const currentPopup = document.querySelector('.popup:not(.hidden)');
