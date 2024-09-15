@@ -3,42 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anna, я тебе люблю!</title>
+    <title>Lovely</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Додавання favicon -->
+    <link rel="icon" type="image/png" href="icon.png">
 </head>
 <body>
 <div class="container">
     <div class="popup" id="popup1">
-        <p>Анна, чи знаєш ти, як сильно тебе люблю?</p>
-        <button onclick="playMusic()">Натисни, щоб увімкнути музику</button>
-        <audio id="bg-music" loop>
-            <source src="music_la_la.mp3" type="audio/mpeg">
-            <source src="music_la_la.mp3" type="audio/ogg">
-        </audio>
-
-        <button onclick="nextPopup(2)">Так</button>
-        <button onclick="nextPopup(2)">Хочу дізнатись більше</button>
+        <p>Сьогодні Надзвичайна дата, 16.09.2024</p>
+        <button onclick="playMusic(), nextPopup(2)">Почати?)</button>
     </div>
 
+    <!-- Вікторина -->
     <div class="popup hidden" id="popup2">
-        <p>Ти – сенс мого життя. Що ти любиш найбільше?</p>
-        <button onclick="nextPopup(3)">Моменти разом</button>
-        <button onclick="nextPopup(3)">Твою посмішку</button>
+        <p>Моя люба дівчинка, це невеличкий початок:</p>
+        <p>1. Який твій улюблений колір?</p>
+        <input type="text" id="q1"><br>
+
+        <p>2. Який твій улюблений серіал?</p>
+        <input type="text" id="q2"><br>
+
+        <p>3. Куди б ти хотіла поїхати?</p>
+        <input type="text" id="q3"><br>
+
+        <p>4. Яка твоя улюблена страва?</p>
+        <input type="text" id="q4"><br>
+
+        <p>5. Чому саме 16, як ти думаєш?</p>
+        <input type="text" id="q5"><br>
+
+        <p>6. Кого ти любиш найбільше?</p>
+        <input type="text" id="q6"><br>
+
+        <button onclick="submitQuiz()">Завершити вікторину</button>
     </div>
 
     <div class="popup hidden" id="popup3">
-        <p>Якби любов була музикою, яку пісню ти б обрала?</p>
-        <button onclick="nextPopup(4)">Мелодія серця</button>
+        <p>Ітак, взагалі я тебе дуже сильно люблю ❤️❤️❤️,</p>
+        <p>Чи знаєш наскільки я тебе люблю?☯</p>
+        <button onclick="nextPopup(4)">Так</button>
+        <button onclick="nextPopup(4)">Хочу дізнатись більше</button>
     </div>
 
     <div class="popup hidden" id="popup4">
-        <p>Я люблю тебе більше за все на світі</p>
-        <button onclick="endPopup()">Назавжди разом</button>
+        <p>Розповім таємницю, чому саме 16те, насправді саме 16го числа почалася історія нашого знайомства💞💞</p>
+        <button onclick="nextPopup(5)">Продовжимо люба?</button>
+    </div>
+
+    <div class="popup hidden" id="popup5">
+        <p>Мелодія яка мені подобається це ти</p>
+        <button onclick="nextPopup(6)">Мелодія серця</button>
+    </div>
+
+    <div class="popup hidden" id="popup6">
+        <p>Моє серце наповнене любові до тебе, тому для тебе відкриті ворота в моє серце</p>
+        <button onclick=" endPopup()">Зайти до серця</button>
+    </div>
+</div>
+
+<!-- Модальне вікно для повідомлення -->
+<div id="customAlert" class="custom-alert hidden">
+    <div class="alert-content">
+        <p id="alertMessage"></p>
+        <button onclick="closeCustomAlert()">OK</button>
     </div>
 </div>
 
 <!-- Музика -->
+<audio id="bg-music" loop>
+    <source src="music_la_la.mp3" type="audio/mpeg">
+    <source src="music_la_la.mp3" type="audio/ogg">
+</audio>
 
+<!-- Нова пісня -->
+<audio id="new-music" loop>
+    <source src="music2.mp3" type="audio/mpeg">
+    <source src="music2.mp3" type="audio/ogg">
+</audio>
+
+<!-- Лінія часу -->
+<div id="timeline" class="timeline">
+    <div class="event left">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto1.jpg" alt="Фото 1">
+            <p class="text_forFoto">Ти - і є мій янгол💕💕</p>
+        </div>
+    </div>
+    <div class="event right">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto2.jpg" alt="Фото 2">
+            <p class="text_forFoto">Ти - мій світ❤</p>
+        </div>
+    </div>
+    <div class="event left">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto3.jpg" alt="Фото 3">
+            <p class="text_forFoto">Моя підтримка і надія💜💜</p>
+        </div>
+    </div>
+    <div class="event right">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto4.jpg" alt="Фото 4">
+            <p class="text_forFoto">Люблю тебе безмежно</p>
+        </div>
+    </div>
+    <div class="event left">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto5.jpg" alt="Фото 5">
+            <p class="text_forFoto">Ти — найкраще, що сталося в моєму житті</p>
+        </div>
+    </div>
+    <div class="event right">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto6.jpg" alt="Фото 7">
+            <p class="text_forFoto">Без тебе моє життя було б неповним</p>
+        </div>
+    </div>
+    <div class="event left">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto7.jpg" alt="Фото 7">
+            <p class="text_forFoto">З тобою кожен день наповнений сенсом і любов'ю</p>
+        </div>
+    </div>
+    <div class="event right">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto8.jpg" alt="Фото 8">
+            <p class="text_forFoto">Ти — моя найцінніша частина життя</p>
+        </div>
+    </div>
+    <div class="event left">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto9.jpg" alt="Фото 9">
+            <p class="text_forFoto">Моє серце б’ється тільки для тебе</p>
+        </div>
+    </div>
+    <div class="event right">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto10.jpg" alt="Фото 10">
+            <p class="text_forFoto">Без тебе все інше не має сенсу</p>
+        </div>
+    </div>
+    <div class="event left">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto11.jpg" alt="Фото 11">
+            <p class="text_forFoto">Ти — причина, чому я посміхаюся кожен день</p>
+        </div>
+    </div>
+    <div class="event right">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto12.jpg" alt="Фото 12">
+            <p class="text_forFoto">Ти — моя єдина і неповторна любов</p>
+        </div>
+    </div>
+    <div class="event left">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto13.jpg" alt="Фото 13">
+            <p class="text_forFoto">В твоїх очах відбивається найпрекрасніший колір світу, і я гублюсь у їхньому чарівному відтінку</p>
+        </div>
+    </div>
+    <div class="event right">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto14.jpg" alt="Фото 14">
+            <p class="text_forFoto">Ти — та людина, з якою я хочу провести все своє життя</p>
+        </div>
+    </div>
+    <div class="event left">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto15.jpg" alt="Фото 15">
+            <p class="text_forFoto">Ти — моя найголовніша мрія, яка здійснилася</p>
+        </div>
+    </div>
+    <div class="event right">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto16.jpg" alt="Фото 16">
+            <p class="text_forFoto">В твоїх очах зелені-сірого відтінку я бачу цілий всесвіт, сповнений чарівності та таємниць</p>
+        </div>
+    </div>
+    <div class="event left">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto17.jpg" alt="Фото 17">
+            <p class="text_forFoto">Моє серце відкрите тільки для тебе</p>
+        </div>
+    </div>
+    <div class="event right">
+        <div class="line"></div>
+        <div class="content">
+            <img src="foto18.jpg" alt="Фото 18">
+            <p class="text_forFoto">Люблю тебе безможно</p>
+        </div>
+    </div>
+</div>
+
+<!-- Світіння -->
+<div class="glow-border"></div>
 
 <script src="script.js"></script>
 </body>

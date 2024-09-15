@@ -11,8 +11,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: 100vh;
-//background: url('background-image.jpg') no-repeat center center/cover;
 }
 
 .container {
@@ -20,12 +21,31 @@ body {
     max-width: 600px;
 }
 
+/* Стиль для попапів */
 .popup {
-    background-color: white;
-    padding: 30px;
+    position: relative;
+    padding: 20px;
+    border: 2px solid transparent; /* Додаємо прозорий бордер, щоб світіння працювало */
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Колір фону попапу */
+    z-index: 1;
 }
+
+/* Градієнтне світіння по контуру */
+.popup::before {
+    content: '';
+    position: absolute;
+    top: -5px; /* Негативний відступ для розширення контуру */
+    left: -5px; /* Негативний відступ для розширення контуру */
+    width: calc(100% + 10px); /* Ширина з урахуванням відступів */
+    height: calc(100% + 10px); /* Висота з урахуванням відступів */
+    border-radius: 15px; /* За потреби, зміни до розміру попапа */
+    background: linear-gradient(45deg, #ff0, #f0f, #0ff, #f00); /* Колір градієнта */
+    background-size: 400% 400%;
+    z-index: -1; /* Світіння буде позаду контенту */
+    animation: gradientBorder 5s ease infinite;
+}
+
 
 .hidden {
     display: none;
@@ -49,4 +69,166 @@ button:hover {
 p {
     font-size: 20px;
     margin-bottom: 20px;
+}
+
+.custom-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.alert-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Градієнтне світіння по контуру */
+.glow-border {
+    position: absolute;
+
+    border-radius: 25px; /* За потреби, зміни до розміру попапа */
+    background: linear-gradient(45deg, #ff0, #f0f, #0ff, #f00); /* Колір градієнта */
+    background-size: 400% 400%;
+    animation: gradientBorder 5s ease infinite;
+    z-index: 0; /* Світіння буде позаду контенту */
+    transform: translate(-50%, -50%); /* Центрування по відношенню до контейнера */
+}
+
+/* Анімація градієнтного світіння */
+@keyframes gradientBorder {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+body {
+    background-color: #f3e1f7;
+    font-family: Arial, sans-serif;
+}
+
+#timeline {
+    flex-direction: column;
+    max-height: 100vh; /* Забезпечити висоту екрану */
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100vh;
+    border-left: 0px solid blue; /* Центральна вертикальна лінія */
+    display: none; /* Ховаємо контент до натискання кнопки */
+}
+
+.event {
+    position: relative;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+}
+
+.left .content {
+    float: right;
+    margin-left: 550px;
+}
+
+.right .content {
+    float: right;
+    margin-left: 770px;
+}
+
+/*.event .content {*/
+/*    background-color: #fff;*/
+/*    border-radius: 8px;*/
+/*    padding: 10px;*/
+/*    width: 200px;*/
+/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+.event img {
+    width: 200px;
+    height: 200px;
+    border-radius: 80%;
+    box-shadow: 0 0 50px rgba(250, 0, 250, 0.6); /* Світіння */
+}
+
+/* Вирівнювання зображень */
+.left .line {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    width: 20px;
+    height: 2px;
+    background-color: #ddd;
+}
+
+.right .line {
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 20px;
+    height: 2px;
+    background-color: #ddd;
+}
+
+/* Вертикальна лінія по центру */
+#timeline::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 760px;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100vh;
+    background-color: purple;
+}
+
+/* Клас, який ховає контент */
+/*.hidden {*/
+/*    display: none;*/
+/*}*/
+
+
+
+/*-------------------------------Text-------------------------*/
+.text_forFoto{
+    font-size: 90%;
+    text-align: center;
+    width: 200px;
+}
+/*------------------------------------------------------------*/
+#q1{
+    width: 200px;
+    height: 25px;
+}
+#q2{
+    width: 200px;
+    height: 25px;
+}
+#q3{
+    width: 200px;
+    height: 25px;
+}
+#q4{
+    width: 200px;
+    height: 25px;
 }
