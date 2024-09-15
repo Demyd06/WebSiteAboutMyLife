@@ -241,3 +241,19 @@ body {
     width: 200px;
     height: 25px;
 }
+
+@media (max-width: 600px) {
+    #timeline {
+        padding: 10px; /* Зменшити відступи на мобільних пристроях */
+        border-left-width: 1px; /* Тонша лінія */
+    }
+
+    .event img {
+        max-width: 100%; /* Зменшити зображення до ширини екрана */
+        height: auto; /* Зберегти пропорції */
+    }
+
+    .text_forFoto {
+        font-size: 14px; /* Зменшити розмір шрифту */
+    }
+}
